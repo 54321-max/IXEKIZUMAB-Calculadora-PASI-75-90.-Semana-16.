@@ -99,7 +99,7 @@ with st.expander("Transparencia del modelo"):
         for endpoint, info in models_info.items():
             st.markdown(f"**{endpoint}**")
 
-            # Caso metadata antiguo (ruta como string)
+            # Metadata antiguo → solo ruta
             if isinstance(info, str):
                 st.caption(f"Archivo del modelo: {info}")
                 st.info(
@@ -108,7 +108,7 @@ with st.expander("Transparencia del modelo"):
                 )
                 continue
 
-            # Caso metadata nuevo (diccionario con métricas)
+            # Metadata nuevo → métricas
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("N", info.get("n", "NA"))
             c2.metric("Eventos", info.get("pos", "NA"))
@@ -121,13 +121,13 @@ with st.expander("Transparencia del modelo"):
 
         st.caption("AUC: discriminación. Brier: calibración (menor es mejor).")
 
-else:
-    st.warning(
+    else:
+        st.warning(
             "No se encontró el archivo metadata.json del modelo. "
             "Reentrena y vuelve a subir los modelos."
         )
 
-st.caption(
+    st.caption(
         "Herramienta de apoyo a la decisión clínica. "
         "No sustituye el juicio clínico."
     )
