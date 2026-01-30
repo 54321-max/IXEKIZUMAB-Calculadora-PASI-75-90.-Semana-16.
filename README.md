@@ -1,0 +1,1 @@
+# IXEKIZUMAB-Calculadora-PASI-75-90.-Semana-16.
